@@ -42,6 +42,7 @@ class ChangeColor(http.Controller):
             # and write everything back
             
             with open(less_path, 'w') as file:
+                _logger.warning('---------------------data (%s).', data[18])
                 file.writelines( data )
                 file.close()
                 res.append({'res':1})
