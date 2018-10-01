@@ -1,7 +1,6 @@
     #-*- coding: utf-8 -*-
 from odoo import http, _
 import logging
-import random
 import json
 import os
 from odoo.http import request
@@ -40,7 +39,8 @@ class ChangeColor(http.Controller):
             data[16] = '@brand-primary:            %s;\n'%color
             data[18] = '@brand-info:            %s;\n'%color
             # and write everything back
-            
+            file =  open(less_path, 'w') 
+            _logger.warning('---------------------file (%s).', file)
             with open(less_path, 'w') as file:
                 _logger.warning('---------------------data (%s).', data[18])
                 file.writelines( data )
