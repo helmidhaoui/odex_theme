@@ -30,9 +30,9 @@ class ChangeColor(http.Controller):
         _logger.warning('---------------------less_path (%s).', less_path)
         if color: 
             
-            with open(less_path, 'r') as file:
-                data = file.readlines()
-                file.close()
+            file = open(less_path, 'r')
+            data = file.readlines()
+            file.close()
             _logger.warning('---------------------data (%s).', data[16])
             print ("color1 " , data[16])
             print ("color2 " , data[18])
@@ -41,7 +41,6 @@ class ChangeColor(http.Controller):
             data[18] = '@brand-info:            %s;\n'%color
             # and write everything back
             
-            file = open(less_path, 'w')
             _logger.warning('---------------------data (%s).', data[18])
             file.writelines( data )
             file.close()
