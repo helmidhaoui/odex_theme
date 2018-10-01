@@ -32,7 +32,6 @@ class ChangeColor(http.Controller):
             
             file = open(less_path, 'r')
             data = file.readlines()
-            file.close()
             _logger.warning('---------------------data (%s).', data[16])
             print ("color1 " , data[16])
             print ("color2 " , data[18])
