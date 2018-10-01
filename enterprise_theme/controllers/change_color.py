@@ -39,7 +39,11 @@ class ChangeColor(http.Controller):
             data[16] = '@brand-primary:            %s;\n'%color
             data[18] = '@brand-info:            %s;\n'%color
             # and write everything back
-            file =  open(less_path, 'w') 
+            try:
+                file =  open(less_path, 'w') 
+                
+            except Exception as e:
+                print('--------------------e',e)
             _logger.warning('---------------------file (%s).', file)
             with open(less_path, 'w') as file:
                 _logger.warning('---------------------data (%s).', data[18])
