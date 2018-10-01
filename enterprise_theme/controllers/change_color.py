@@ -41,11 +41,11 @@ class ChangeColor(http.Controller):
             data[18] = '@brand-info:            %s;\n'%color
             # and write everything back
             
-            with open(less_path, 'w') as file:
-                _logger.warning('---------------------data (%s).', data[18])
-                file.writelines( data )
-                file.close()
-                res.append({'res':1})
+            file = open(less_path, 'w')
+            _logger.warning('---------------------data (%s).', data[18])
+            file.writelines( data )
+            file.close()
+            res.append({'res':1})
         else:
             res.append({'res':0})
         _logger.warning('---------------------res (%s).', res)
