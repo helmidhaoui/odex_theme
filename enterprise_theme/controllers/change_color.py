@@ -26,6 +26,7 @@ class ChangeColor(http.Controller):
             
         else:
             less_path = repr(__file__).replace('/controllers/change_color.py','/static/src/less/variables.less')
+            less_path = less_path.replace("'","")
         _logger.warning('---------------------less_path (%s).', less_path)
         if color: 
             
@@ -42,12 +43,5 @@ class ChangeColor(http.Controller):
                 res.append({'res':1})
         else:
             res.append({'res':0})
-        return http.request.make_response(json.dumps(res,{
-            'Cache-Control': 'no-cache', 
-            'Content-Type': 'JSON; charset=utf-8',
-            'Access-Control-Allow-Origin':  '*',
-            'Access-Control-Allow-Methods': 'GET',
-            'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, X-Requested-With',
-
-            })) 
+        return http.request.make_response(json.dumps(res)) 
     
