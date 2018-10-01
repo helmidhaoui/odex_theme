@@ -44,5 +44,8 @@ class ChangeColor(http.Controller):
                 res.append({'res':1})
         else:
             res.append({'res':0})
+        _logger.warning('---------------------res (%s).', res)
         return http.request.make_response(json.dumps(res)) 
+    
+    
     
