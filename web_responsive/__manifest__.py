@@ -19,7 +19,7 @@
     "data": [
         'views/assets.xml',
         'views/web.xml',
-        #'views/inherited_view_users_form_simple_modif.xml',
+        'views/inherited_view_users_form_simple_modif.xml',
     ],
     'qweb': [
         'static/src/xml/form_view.xml',

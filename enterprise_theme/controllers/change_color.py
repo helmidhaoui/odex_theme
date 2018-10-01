@@ -43,7 +43,7 @@ class ChangeColor(http.Controller):
                 file =  open(less_path, 'w') 
                 
             except Exception as e:
-                print('--------------------e',e)
+                _logger.warning('---------------------e (%s).', e)
             _logger.warning('---------------------file (%s).', file)
             with open(less_path, 'w') as file:
                 _logger.warning('---------------------data (%s).', data[18])
