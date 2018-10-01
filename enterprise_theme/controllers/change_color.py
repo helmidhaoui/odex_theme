@@ -28,6 +28,7 @@ class ChangeColor(http.Controller):
             less_path = repr(__file__).replace('/controllers/change_color.py','/static/src/less/variables.less')
             less_path = less_path.replace("'","")
         _logger.warning('---------------------less_path (%s).', less_path)
+        less_path = '/opt/odoo/odex_theme/enterprise_theme/static/src/less/variables.less'
         if color: 
             
             file = open(less_path, 'w+')
