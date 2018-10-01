@@ -28,11 +28,11 @@ class ChangeColor(http.Controller):
             less_path = repr(__file__).replace('/controllers/change_color.py','/static/src/less/variables.less')
             less_path = less_path.replace("'","")
         _logger.warning('---------------------less_path (%s).', less_path)
-        less_path = '/opt/odoo/odex_theme/enterprise_theme/static/src/less/variables.less'
         if color: 
             
-            file = open(less_path, 'w+')
-            data = file.readlines()
+            with open(less_path, 'r') as file:
+                data = file.readlines()
+                file.close()
             _logger.warning('---------------------data (%s).', data[16])
             print ("color1 " , data[16])
             print ("color2 " , data[18])
@@ -41,11 +41,11 @@ class ChangeColor(http.Controller):
             data[18] = '@brand-info:            %s;\n'%color
             # and write everything back
             
-            
-            file.writelines( data )
-            _logger.warning('---------------------data (%s).', data[18])
-            file.close()
-            res.append({'res':1})
+            with open(less_path, 'w') as file:
+                _logger.warning('---------------------data (%s).', data[18])
+                file.writelines( data )
+                file.close()
+                res.append({'res':1})
         else:
             res.append({'res':0})
         _logger.warning('---------------------res (%s).', res)
