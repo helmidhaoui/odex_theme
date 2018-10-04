@@ -34,14 +34,15 @@ class ChangeColor(http.Controller):
             data[18] = '@brand-info:            %s;\n'%color
             # and write everything back
             try:
-                file =  open(less_path, 'w') 
                 
+               
+                with open(less_path, 'w') as file:
+                    file.writelines( data )
+                    file.close()
+                    res.append({'res':1})
             except Exception as e:
                 _logger.warning('---------------------e (%s).', e)
-            with open(less_path, 'w') as file:
-                file.writelines( data )
-                file.close()
-                res.append({'res':1})
+                res.append({'res':0})
         else:
             res.append({'res':0})
         return http.request.make_response(json.dumps(res)) 
