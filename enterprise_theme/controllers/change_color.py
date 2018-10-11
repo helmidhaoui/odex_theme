@@ -34,8 +34,6 @@ class ChangeColor(http.Controller):
             data[18] = '@brand-info:            %s;\n'%color
             # and write everything back
             try:
-                
-               
                 with open(less_path, 'w') as file:
                     file.writelines( data )
                     file.close()
@@ -46,6 +44,21 @@ class ChangeColor(http.Controller):
         else:
             res.append({'res':0})
         return http.request.make_response(json.dumps(res)) 
+    
+    @http.route('/change_logo', type='http', auth='public')
+    def change_logo(self,**post):
+        res=[]
+        try:
+            image = post.get('image')
+            #image = image.replace('data:image/png;base64,','').encode("ascii")
+            company  = request.env['res.company'].sudo().search([],limit=1)
+            company.write({'logo':image})
+            res.append({'res':1})
+        except Exception as e:
+                _logger.warning('---------------------e (%s).', e)
+                res.append({'res':0})
+        return http.request.make_response(json.dumps(res))
+    
     
     
     
